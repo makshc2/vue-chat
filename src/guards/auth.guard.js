@@ -1,13 +1,13 @@
 import router from '@/router';
 
-export default function authGuard() {
-  const isAuth = false;
+export default function authGuard(store) {
   const publicRoutes = ['Login'];
+
   router.beforeEach((to, from, next) => {
-    if (publicRoutes.includes(to.name) && isAuth) {
+    if (publicRoutes.includes(to.name) && store.state.auth.isLogin) {
       return next({ name: 'Home' });
     }
-    if (!publicRoutes.includes(to.name) && !isAuth) {
+    if (!publicRoutes.includes(to.name) && !store.state.auth.isLogin) {
       return next({ name: 'Login' });
     }
     return next();

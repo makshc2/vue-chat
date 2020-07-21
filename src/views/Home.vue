@@ -1,12 +1,24 @@
 <template>
  <div>
      Home
+     <q-btn @click="logOutUser"
+            label="Log out"
+     />
  </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Home',
+  methods: {
+    ...mapActions('auth', ['logOut']),
+    async logOutUser() {
+      await this.logOut();
+      this.$router.push({ name: 'Login' });
+    },
+  },
 };
 </script>
 
