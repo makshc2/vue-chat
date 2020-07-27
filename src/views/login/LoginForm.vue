@@ -2,7 +2,7 @@
     <div class="login-page flex justify-center items-center bg-green-2">
         <q-card align="center" class="q-pa-xl q-gutter-y-lg">
             <q-avatar size="150px">
-               <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+               <img :src="require('@/assets/images/boy-avatar.png')">
             </q-avatar>
             <div class="title text-bold">Login</div>
 
@@ -62,7 +62,7 @@
                 </template>
             </q-btn>
             <div class="column q-gutter-y-sm">
-                <router-link :to="{name: 'ForgotPassword'}">Restore password</router-link>
+                <router-link :to="{name: 'RestorePassword'}">Restore password</router-link>
                 <router-link :to="{name: 'Registration'}">Registration</router-link>
             </div>
         </q-card>
