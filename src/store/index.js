@@ -5,6 +5,7 @@ import firebase from '@/plugins/firebase';
 import router from '@/router';
 import auth from './modules/auth';
 import registration from './modules/registration';
+import resetPassword from './modules/resetPassword';
 import notify from './modules/notify';
 import user from './modules/user';
 
@@ -20,6 +21,7 @@ const store = new Vuex.Store({
   modules: {
     auth,
     registration,
+    resetPassword,
     notify,
     user,
   },
