@@ -16,8 +16,8 @@
                      @focus="reset"
                      :error="invalid && validated"
                      error-message="Field not valid"
-                     type="Enter email"
-                     label="Email"
+                     type="email"
+                     label="Enter email"
             />
         </ValidationProvider>
             <q-btn label="Restore password"
@@ -51,7 +51,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['loginInProgress']),
+    ...mapGetters('resetPassword', ['loginInProgress']),
   },
   methods: {
     ...mapActions('resetPassword', ['resetPassword']),

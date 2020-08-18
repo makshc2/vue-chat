@@ -110,7 +110,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['loginInProgress']),
+    ...mapGetters('registration', ['loginInProgress']),
   },
   methods: {
     ...mapActions('registration', ['registration']),

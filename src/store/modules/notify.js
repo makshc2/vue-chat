@@ -1,8 +1,6 @@
 import mutation from '../mutation';
 
-const {
-  SHOW_NOTIFY,
-} = mutation;
+const { SHOW_NOTIFY } = mutation;
 
 const notifyStore = {
   state: {
