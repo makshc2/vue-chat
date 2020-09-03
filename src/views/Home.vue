@@ -15,8 +15,10 @@ export default {
   methods: {
     ...mapActions('auth', ['logOut']),
     async logOutUser() {
-      await this.logOut();
-      this.$router.push({ name: 'Login' });
+      await this.logOut()
+        .then(() => {
+          this.$router.push({ name: 'Login' });
+        });
     },
   },
 };
