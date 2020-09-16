@@ -110,12 +110,18 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('registration', ['loginInProgress']),
+    ...mapGetters('registration', ['loginInProgress', 'isFirstLogin']),
+  },
+  watch: {
+    isFirstLogin: 'redirectToSettings',
   },
   methods: {
     ...mapActions('registration', ['registration']),
     registerUser() {
       this.registration({ ...this.formData });
+    },
+    redirectToSettings(value) {
+      if (value) this.$router.push({ name: 'FirstLoginSettings' });
     },
   },
 };

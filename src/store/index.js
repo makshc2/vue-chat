@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import authGuard from '@/guards/auth.guard';
 import firebase from '@/plugins/firebase';
-import router from '@/router';
+import { firebaseGetToken } from '@/services/firebase/getToken';
 import auth from './modules/auth';
 import registration from './modules/registration';
 import resetPassword from './modules/resetPassword';
@@ -27,10 +27,15 @@ const store = new Vuex.Store({
   },
 });
 
-firebase.auth().onAuthStateChanged((userData) => {
+firebase.auth().onAuthStateChanged(async (userData) => {
   store.dispatch('setIsLoginInState', Boolean(userData));
   store.dispatch('setUserState', userData);
-  if (userData) router.push({ name: 'Home' });
+  if (userData) {
+    const token = await firebaseGetToken();
+    localStorage.setItem('token', token);
+  } else {
+    localStorage.removeItem('token');
+  }
 });
 authGuard(store);
 export default store;

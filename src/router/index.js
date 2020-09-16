@@ -25,6 +25,11 @@ const routes = [
     name: 'RestorePassword',
     component: () => import('../views/restorePassword/RestorePassword.vue'),
   },
+  {
+    path: '/first-login',
+    name: 'FirstLoginSettings',
+    component: () => import('../views/firstLoginSettings/FirstLoginSettings.vue'),
+  },
 ];
 
 const router = new VueRouter({

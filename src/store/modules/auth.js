@@ -8,7 +8,7 @@ const {
 const authStore = {
   namespaced: true,
   state: {
-    isLogin: false,
+    isLogin: Boolean(localStorage.getItem('token')),
     loginInProgress: false,
   },
   getters: {

@@ -84,12 +84,18 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['loginInProgress']),
+    ...mapGetters('auth', ['loginInProgress', 'isLogin']),
+  },
+  watch: {
+    isLogin: 'redirectToHome',
   },
   methods: {
     ...mapActions('auth', ['login']),
     loginUser() {
       this.login({ ...this.formData });
+    },
+    redirectToHome(value) {
+      if (value) this.$router.push({ name: 'Home' });
     },
   },
 };
