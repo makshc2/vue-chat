@@ -1,3 +1,4 @@
+import axios from '@/plugins/axios';
 import mutations from '../mutation';
 
 const { USER } = mutations;
@@ -17,10 +18,25 @@ const userStore = {
   },
   actions: {
     setUserState: {
-      handler({ commit }, user) {
-        commit(USER, user);
+      handler({ dispatch }, user) {
+        dispatch('getUser', user.email, user);
       },
       root: true,
+    },
+    async getUser({ commit }, email, user) {
+      try {
+        await axios.get(`/users/${email}`);
+        commit(USER, user);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async createUserInfo(context, data) {
+      try {
+        await axios.post('/users', data);
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
 };

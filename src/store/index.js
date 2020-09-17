@@ -32,9 +32,9 @@ firebase.auth().onAuthStateChanged(async (userData) => {
   store.dispatch('setUserState', userData);
   if (userData) {
     const token = await firebaseGetToken();
-    localStorage.setItem('token', token);
+    localStorage.setItem(process.env.VUE_APP_LS_TOKEN_KEY, token);
   } else {
-    localStorage.removeItem('token');
+    localStorage.removeItem(process.env.VUE_APP_LS_TOKEN_KEY);
   }
 });
 authGuard(store);
