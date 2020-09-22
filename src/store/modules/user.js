@@ -23,10 +23,10 @@ const userStore = {
       },
       root: true,
     },
-    async getUser({ commit }, email, user) {
+    async getUser({ commit }, email) {
       try {
-        await axios.get(`/users/${email}`);
-        commit(USER, user);
+        const usersInfo = await axios.get(`/users/${email}`);
+        commit(USER, usersInfo.data);
       } catch (err) {
         console.log(err);
       }

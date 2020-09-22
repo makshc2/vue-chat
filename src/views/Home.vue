@@ -4,6 +4,9 @@
      <q-btn @click="logOutUser"
             label="Log out"
      />
+    <router-link :to="{name:'UserProfile'}">
+      Profile settings
+    </router-link>
  </div>
 </template>
 

@@ -82,7 +82,7 @@ export default {
 
 <style scoped lang="scss">
 .settings-wrapper{
-  height: 100vh;
+   height: 100vh;
    background-color: aquamarine;
   .my-card{
     width: 300px;

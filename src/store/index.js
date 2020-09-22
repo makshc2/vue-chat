@@ -29,8 +29,8 @@ const store = new Vuex.Store({
 
 firebase.auth().onAuthStateChanged(async (userData) => {
   store.dispatch('setIsLoginInState', Boolean(userData));
-  store.dispatch('setUserState', userData);
   if (userData) {
+    store.dispatch('setUserState', userData);
     const token = await firebaseGetToken();
     localStorage.setItem(process.env.VUE_APP_LS_TOKEN_KEY, token);
   } else {
